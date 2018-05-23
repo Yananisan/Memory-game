@@ -1,0 +1,113 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: darkgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header:hover {
+    background-color: grey;
+}
+
+div.deck {
+    background-color: lightgrey;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div.card {
+    background-color: darkcyan;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+}
+
+ul.menu-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.menu {
+    display: flex;
+    padding: 1em;
+    background-color: mediumseagreen;
+    border-radius: 0.5em;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid seagreen;
+}
+
+li.menu-entry {
+    width: 100%;
+    text-align: center;
+    margin: 0.1em 0px;
+    padding: 0.2em 0.2em;
+    background-color: mediumseagreen;
+    border-radius: 0.2em;
+    border: 2px solid seagreen;
+    cursor: pointer;
+}
+
+li.menu-entry:hover {
+    background-color: seagreen;
+}
+
+img.card-image {
+    width: 75%;
+    height: 75%;
+}
+
+.invisible {
+    display: none !important;
+}
+
+div.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+li.close-button {
+    margin-top: 1em;
+}
+
+li.non-pressable {
+    background-color: seagreen;
+	cursor: default;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Memory match game</title>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    </head>
+    <body id="body" onresize="OnBodyResize()">
+        <section id="container">
+            <header id="header">
+                <nav id="nav" onclick="OnMenuClick()">
+                    <span id="menu-title">MENU</span>
+                </nav>
+            </header>
+            <div id="deck" class="deck">
+                <!-- Filled with cards -->
+            </div>
+            <template id="card-template">
+                <div class="card" onclick="OnCardClick(event)">
+                    <img class="card-image">
+                </div>
+            </template>
+        </section>
+
+        <div id="overlay" class="overlay invisible">
+
+            <div id="menu" class="menu invisible">
+                <ul class="menu-list">
+                    <li class="menu-entry" onclick="OnMenuRestartClick()">
+                        <span>Restart</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnMenuDifficultyClick()">
+                        <span>Change difficulty</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnMenuCardBackClick()">
+                        <span>Select card back</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnMenuRulesClick()">
+                        <span>Read rules</span>
+                    </li>
+                    <li class="menu-entry close-button" onclick="OnMenuCloseClick()">
+                        <span>Close</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="difficulties-list" class="menu invisible">
+                <ul class="menu-list">
+                    <li class="menu-entry" onclick="OnDifficultyClick(1)">
+                        <span>Easy</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnDifficultyClick(2)">
+                        <span>Medium</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnDifficultyClick(3)">
+                        <span>Hard</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnDifficultyClick(4)">
+                        <span>🔥 INSANE 🔥</span>
+                    </li>
+                    <li class="menu-entry close-button" onclick="OnDifficultyCancelClick()">
+                        <span>Close</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="card-backs-list" class="menu invisible">
+                <ul class="menu-list">
+                    <li class="menu-entry" onclick="OnCardBackClick('skins/numbers')">
+                        <span>Numbers</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnCardBackClick('skins/memes')">
+                        <span>Rage memes</span>
+                    </li>
+                    <li class="menu-entry" onclick="OnCardBackClick('skins/yoba')">
+                        <span>ALLOU ETO TI???</span>
+                    </li>
+                    <li class="menu-entry close-button" onclick="OnCardBackCancelClick()">
+                        <span>Close</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="rules" class="menu invisible">
+                <ul class="menu-list">
+                    <li class="menu-entry non-pressable">
+                        <span>
+                            Choose one card, then choose another one. If they are same, then they are
+                            considered matched, else they close again. The goal is to match them all.
+                        </span>
+                    </li>
+                    <li class="menu-entry close-button" onclick="OnRulesCloseClick()">
+                        <span>Close</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="end-of-game" class="menu invisible">
+                <ul class="menu-list">
+                    <li class="menu-entry non-pressable">
+                        <span>You won!</span>
+                    </li>
+                    <li class="menu-entry close-button" onclick="OnGameEndCloseClick()">
+                        <span>Restart</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <script src="scripts/script.js"></script>
+
+    </body>
+</html>
