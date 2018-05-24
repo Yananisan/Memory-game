@@ -1,6 +1,6 @@
-/*
-    global variables initialization
- */
+
+//	Global variables initialization
+
 
 const sleepTime = 500;
 let canBeClicked = true;
@@ -8,9 +8,8 @@ let cardsArray = new Array();
 let skinPath = "skins/numbers";
 let lastOpenedCard = null;
 
-/*
-    Card structure (class)
- */
+
+//	Card structure (class)
 
 function Card(number, value) {
     this.number = number;
@@ -19,17 +18,17 @@ function Card(number, value) {
     this.matched = false;
 }
 
-/*
-    functions
- */
 
+//	functions
+
+//	Shuffle cards on the board before the game
 function ShuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
+//	Resize the board with changing of difficulty
 function SetSizeById(id, width, height) {
     let element = document.getElementById(id);
     if (element !== null) {
@@ -59,7 +58,7 @@ function SetWidthByClassName(className, width) {
         element.style.width = width;
     });
 }
-
+//	To create a new card board we mast delete all cards on the board
 function DeleteAllByClassName(className) {
     let elements = Array.from(document.getElementsByClassName(className));
     elements.forEach((element) => {
@@ -68,7 +67,7 @@ function DeleteAllByClassName(className) {
         }
     });
 }
-
+//	With resizing we must call a new set of images form the path (not necessary)
 function ChangeAllCardsImages(imagePath) {
     let elements = Array.from(document.getElementsByClassName("card-image"));
     for (let i = 0; i < elements.length; i++) {
@@ -77,7 +76,7 @@ function ChangeAllCardsImages(imagePath) {
         }
     }
 }
-
+// Necessary
 function SetCardImage(cardNumber, imagePath) {
     let cards = Array.from(document.getElementsByClassName("card-image"));
     cards[cardNumber].src = imagePath;
@@ -98,7 +97,7 @@ function SetCardMatched(element, card) {
     element.style.backgroundColor = "mediumseagreen";
     card.matched = true;
 }
-
+//	Restart game without changing it difficulty
 function Restart() {
     ShuffleArray(cardsArray);
     let elements = Array.from(document.getElementsByClassName("card"));
@@ -128,10 +127,10 @@ function SetElementVisibilityById(id, isVisible) {
     }
 }
 
-/*
-    handlers
- */
 
+//	Handlers
+
+// Resize of hole game(board) with starting the game 
 function OnBodyResize() {
     const squared = Math.min(document.body.clientWidth, document.body.clientHeight);
     let width = `${squared * 0.85}px`;
@@ -142,7 +141,7 @@ function OnBodyResize() {
     SetFontSizeById("body", height);
     SetWidthByClassName("menu", `${squared * 0.75}px`);
 }
-
+//	Menu functions that used only in html script
 function OnMenuClick() {
     document.getElementById("overlay").classList.remove("invisible");
     document.getElementById("menu").classList.remove("invisible");
@@ -176,25 +175,6 @@ function OnDifficultyClick(newDifficulty) {
 function OnCardBackCancelClick() {
     document.getElementById("menu").classList.remove("invisible");
     document.getElementById("card-backs-list").classList.add("invisible");
-}
-
-function OnCardBackClick(newPath) {
-    skinPath = `${newPath}`;
-    let images = Array.from(document.getElementsByClassName("card-image")),
-        regexp = new RegExp("/([^/]*)$"),
-        cardName;
-    images.forEach((element) => {
-        if (element.parentElement.parentElement.tagName !== "template") {
-            cardName = regexp.exec(element.getAttribute("src"))[1];
-            element.setAttribute("src", `${newPath}/${cardName}`);
-        }
-    });
-    OnCardBackCancelClick();
-}
-
-function OnMenuCardBackClick() {
-    document.getElementById("menu").classList.add("invisible");
-    document.getElementById("card-backs-list").classList.remove("invisible");
 }
 
 function OnRulesCloseClick() {
